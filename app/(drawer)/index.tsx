@@ -29,13 +29,15 @@ const Page = () => {
   return (
     <Theme name="light">
       <YStack flex={1} alignItems="center" justifyContent="center">
-        <MapboxGL.MapView style={styles.map} logoEnabled={false} scaleBarEnabled={false}>
-          <Camera ref={camera} />
-          <PointAnnotation id="test_marker" coordinate={[-122.335167, 47.608013]} />
-          <MyUserLocation onGetLocation={setUserLocation} />
-        </MapboxGL.MapView>
-        <SearchBar />
-        {/* <Separator /> */}
+        <YStack flex={1}>
+          <MapboxGL.MapView style={styles.map} logoEnabled={false} scaleBarEnabled={false}>
+            <Camera ref={camera} />
+            <PointAnnotation id="test_marker" coordinate={[-122.335167, 47.608013]} />
+            <MyUserLocation onGetLocation={setUserLocation} />
+          </MapboxGL.MapView>
+          <SearchBar />
+          {/* <Separator /> */}
+        </YStack>
       </YStack>
     </Theme>
   );
@@ -43,8 +45,7 @@ const Page = () => {
 
 const styles = StyleSheet.create({
   map: {
-    width: '100%',
-    height: 720,//TODO: hacky, different devices have different height and the map may not cover the top screen without screwing up drawer
+    flex: 1,
   },
 });
 
