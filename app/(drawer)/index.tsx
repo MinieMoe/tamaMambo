@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View } from 'react-native';
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { YStack, H2, Separator, Theme } from 'tamagui';
 import MapboxGL from '@rnmapbox/maps';
 import { PointAnnotation, Camera, Location } from '@rnmapbox/maps';
-import { SearchBar, MyUserLocation } from 'app/components';
+import { SearchBar, MyUserLocation, SlideupPanel } from 'app/components';
 import { Coordinate } from 'app/types/Coordinate';
 
 MapboxGL.setAccessToken(
@@ -29,15 +28,16 @@ const Page = () => {
   return (
     <Theme name="light">
       <YStack flex={1} alignItems="center" justifyContent="center">
-        <YStack flex={1}>
+        <View style={{ flex: 1, ...StyleSheet.absoluteFillObject }}>
           <MapboxGL.MapView style={styles.map} logoEnabled={false} scaleBarEnabled={false}>
             <Camera ref={camera} />
             <PointAnnotation id="test_marker" coordinate={[-122.335167, 47.608013]} />
             <MyUserLocation onGetLocation={setUserLocation} />
           </MapboxGL.MapView>
-          <SearchBar />
-          {/* <Separator /> */}
-        </YStack>
+          <SlideupPanel />
+        </View>
+        <SearchBar />
+        <Separator />
       </YStack>
     </Theme>
   );

@@ -5,7 +5,7 @@ import { UserLocation } from '@rnmapbox/maps';
 
 //TODO: what if the user deny location access
 
-interface MyUserLocationProps {
+type MyUserLocationProps = {
     onGetLocation: (location: Location) => void
 }
 
