@@ -10,13 +10,14 @@ const DrawerLayout = () => (
         drawerLabel: 'Home',
         headerShown:false,
         drawerIcon: ({ size, color }) => <Ionicons name="home-outline" size={size} color={color} />,
+        drawerType: 'front'
       }}
     />
     <Drawer.Screen
-      name="news"
+      name="create"
       options={{
-        headerTitle: 'Newsfeed',
-        drawerLabel: 'News',
+        headerTitle: 'Create a new event',
+        drawerLabel: 'Form',
         drawerIcon: ({ size, color }) => (
           <Ionicons name="newspaper-outline" size={size} color={color} />
         ),
