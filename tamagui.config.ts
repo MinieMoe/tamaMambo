@@ -3,7 +3,7 @@ import { createInterFont } from '@tamagui/font-inter';
 import { createMedia } from '@tamagui/react-native-media-driver';
 import { shorthands } from '@tamagui/shorthands';
 import { themes, tokens } from '@tamagui/themes';
-import { createTamagui } from 'tamagui';
+import { createTamagui, styled, XStack } from 'tamagui';
 
 const animations = createAnimations({
   bouncy: {
@@ -28,6 +28,11 @@ const animations = createAnimations({
 const headingFont = createInterFont();
 
 const bodyFont = createInterFont();
+
+export const InlineContainer = styled(XStack, {
+  ai:"center",
+  jc:"center"
+})
 
 const config = createTamagui({
   light: {

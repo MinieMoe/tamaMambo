@@ -1,6 +1,7 @@
 import { Sheet, SheetProps, useSheet, Text, Button, XStack } from 'tamagui';
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons';
 import { useState } from 'react';
+import EventInfo from './EventInfo';
 
 export default function SlideupPanel() {
   const [open, setOpen] = useState<boolean>(false);
@@ -8,6 +9,7 @@ export default function SlideupPanel() {
 
   return (
     <>
+      {/* Button to test sheet, not  */}
       <Button size="$4" icon={open ? ChevronDown : ChevronUp} onPress={() => setOpen((x) => !x)} />
       <Sheet
         zIndex={0}
@@ -18,17 +20,10 @@ export default function SlideupPanel() {
         snapPoints={[85, 50, 15]}
         position={position}
         onPositionChange={setPosition}
-        dismissOnSnapToBottom//set this to false if you want the sheet to not to be closed by the user by swipping down
+        dismissOnSnapToBottom //set this to false if you want the sheet to not to be closed by the user by swipping down
       >
-        <Sheet.Frame ai="center" jc="center">
-          <Button
-            size="$6"
-            circular
-            icon={ChevronDown}
-            onPress={() => {
-              setOpen(false);
-            }}
-          />
+        <Sheet.Frame ai="flex-start" jc="space-between">
+          <EventInfo />
         </Sheet.Frame>
       </Sheet>
     </>

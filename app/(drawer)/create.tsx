@@ -57,14 +57,16 @@ const Page = () => {
           borderRadius="$4"
           backgroundColor="$background"
           borderColor="$borderColor"
-          padding="$8">
+          paddingHorizontal="$4"
+          paddingVertical="$6"
+          >
           <H4>Photo upload here</H4>
 
-          <YStack width={250} space={'$2'} padding={'$1'}>
+          <YStack width={300} space={'$2'}>
             <Input size="$6" placeholder="Enter event name" />
             <ScheduleInputGroup label="Start" />
             <ScheduleInputGroup label="End  " />
-            {/* TODO: when the user click on this, map should appear */}
+            {/* TODO: when the user click on this, map should appear for location picking*/}
             <Input placeholder="Location" />
             <DescriptionInputGroup />
           </YStack>

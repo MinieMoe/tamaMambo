@@ -13,6 +13,7 @@ You'll need to create [EAS_build](https://docs.expo.dev/develop/development-buil
 - time: when it starts, when it ends
 - how many open slot?
 - rules (optional)
+- type of event (checkbox)
 
 ## [] Upload picture to your hosting event
 
