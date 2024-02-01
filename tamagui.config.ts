@@ -31,7 +31,7 @@ const bodyFont = createInterFont();
 
 export const InlineContainer = styled(XStack, {
   ai:"center",
-  jc:"center"
+  jc:"flex-start"
 })
 
 const config = createTamagui({
