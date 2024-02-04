@@ -2,6 +2,7 @@ import { YStack, XStack, H5, H6, Text, Image, Button, Paragraph } from 'tamagui'
 import { CalendarDays, Clock, MapPin } from '@tamagui/lucide-icons';
 import { InlineContainer } from 'tamagui.config';
 
+const eventName = `Capitol Hill Cupid's Valentine`
 const description = `blah blah blah
 Rules:
 - Don't be a party pooper 
@@ -18,7 +19,7 @@ export default function EventInfo() {
     <XStack p={'$2.5'} space={'$2'} flex={1} fw={'wrap'}>
       <YStack flex={1} ai="flex-start" jc="flex-start" space={'$2'} width={'70%'}>
         <H5 fontWeight={'bold'} width={'100%'}>
-          Capitol Hill Cupid's Valentine
+          {eventName}
         </H5>
         <InlineContainer space={'$5'}>
           <InlineContainer width={100}>
