@@ -21,6 +21,8 @@ export default function EventInfo() {
         <H5 fontWeight={'bold'} width={'100%'}>
           {eventName}
         </H5>
+
+        {/* Datetime picker */}
         <InlineContainer space={'$5'}>
           <InlineContainer width={100}>
             <CalendarDays />
@@ -31,6 +33,8 @@ export default function EventInfo() {
             <Text fontSize={'$4'}>{hour}</Text>
           </InlineContainer>
         </InlineContainer>
+
+        
         <InlineContainer>
           <MapPin />
           <Text fontSize={'$4'}>{location}</Text>

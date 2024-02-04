@@ -5,6 +5,8 @@
 
 You'll need to create [EAS_build](https://docs.expo.dev/develop/development-builds/create-a-build/) because the package to get Mapbox running on react native can't be used in Expo Go app [rnmapbox](https://www.npmjs.com/package/@rnmapbox/maps?activeTab=readme#expo-support:~:text=Expo%20Support,dev%20clients.)
 
+## DateTime picker
+[Package](https://www.npmjs.com/package/@react-native-community/datetimepicker)
 
 # [] Creating events
 ## [] Form to fill out about an even

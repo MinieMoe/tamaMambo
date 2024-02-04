@@ -17,6 +17,7 @@ import { ArrowRight, MapPin, CalendarClock, StickyNote } from '@tamagui/lucide-i
 import { InlineContainer } from 'tamagui.config';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { MyDatetimePicker } from 'app/components';
 import { GestureResponderEvent, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
 interface EventFormValues {
@@ -128,6 +129,7 @@ const Page = () => {
               paddingVertical="$6">
               <H4>Photo upload here</H4>
 
+              {/* Event name input */}
               <YStack width={300} space={'$3'}>
                 <Input
                   size="$6"
@@ -152,9 +154,10 @@ const Page = () => {
                   <H6>Event schedule</H6>
                 </InlineContainer>
                 <XStack ai={'center'} jc={'center'}>
-                  <ScheduleInput />
+                  {/* <ScheduleInput />
                   <ArrowRight />
-                  <ScheduleInput />
+                  <ScheduleInput /> */}
+                  <MyDatetimePicker />
                 </XStack>
 
                 {/* Location picker */}
@@ -163,12 +166,16 @@ const Page = () => {
                   <MapPin />
                   <Input flex={1} placeholder="Location" />
                 </InlineContainer>
+
+                {/* Description Input */}
                 <DescriptionInputGroup
                   value={values.eventDetails}
                   onChangeText={handleChange('eventDetails')}
                   onBlur={handleBlur('eventDetails')}
                   borderColor={touched.eventDetails && errors.eventDetails ? 'red' : undefined}
-                  placeholderTextColor={touched.eventDetails && errors.eventDetails ? 'red' : undefined}>
+                  placeholderTextColor={
+                    touched.eventDetails && errors.eventDetails ? 'red' : undefined
+                  }>
                   {errors.eventDetails && (
                     <Text ta={'right'} color={'$red10Light'}>
                       {errors.eventDetails}
