@@ -13,6 +13,7 @@ import {
   TextArea,
   Text,
 } from 'tamagui';
+import { ScrollView, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { ArrowRight, MapPin, CalendarClock, StickyNote } from '@tamagui/lucide-icons';
 import { InlineContainer } from 'tamagui.config';
 import { Formik } from 'formik';
@@ -109,95 +110,105 @@ const Page = () => {
   }, [status]);
 
   return (
-    <Theme name="light">
-      <YStack flex={1} alignItems="center" justifyContent="center">
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}>
-          {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
-            <Form
-              alignItems="center"
-              minWidth={300}
-              gap="$2"
-              onSubmit={() => setStatus('submitting')}
-              borderWidth={1}
-              borderRadius="$4"
-              backgroundColor="$background"
-              borderColor="$borderColor"
-              paddingHorizontal="$4"
-              paddingVertical="$6">
-              <H4>Photo upload here</H4>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80}
+    >
+      <ScrollView contentContainerStyle={{ top: 20}}>
+        <Theme name="light">
+          <YStack flex={1} alignItems="center" justifyContent="center">
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}>
+              {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
+                <Form
+                  alignItems="center"
+                  minWidth={300}
+                  gap="$2"
+                  onSubmit={() => setStatus('submitting')}
+                  borderWidth={1}
+                  borderRadius="$4"
+                  backgroundColor="$background"
+                  borderColor="$borderColor"
+                  paddingHorizontal="$4"
+                  paddingVertical="$6">
+                  <H4>Photo upload here</H4>
 
-              {/* Event name input */}
-              <YStack width={300} space={'$3'}>
-                <Input
-                  size="$6"
-                  placeholder="Enter event name"
-                  value={values.eventName}
-                  onChangeText={handleChange('eventName')}
-                  onBlur={handleBlur('eventName')}
-                  borderColor={touched.eventName && errors.eventName ? '$red10Light' : undefined}
-                  placeholderTextColor={
-                    touched.eventName && errors.eventName ? '$red10Light' : undefined
-                  }
-                />
-                {errors.eventName && (
-                  <Text ta={'right'} color={'$red10Light'}>
-                    {errors.eventName}
-                  </Text>
-                )}
+                  {/* Event name input */}
+                  <YStack width={300} space={'$3'}>
+                    <Input
+                      size="$6"
+                      placeholder="Enter event name"
+                      value={values.eventName}
+                      onChangeText={handleChange('eventName')}
+                      onBlur={handleBlur('eventName')}
+                      borderColor={
+                        touched.eventName && errors.eventName ? '$red10Light' : undefined
+                      }
+                      placeholderTextColor={
+                        touched.eventName && errors.eventName ? '$red10Light' : undefined
+                      }
+                    />
+                    {errors.eventName && (
+                      <Text ta={'right'} color={'$red10Light'}>
+                        {errors.eventName}
+                      </Text>
+                    )}
 
-                {/* Datetime picker */}
-                <InlineContainer space={'$2'}>
-                  <CalendarClock />
-                  <H6>Event schedule</H6>
-                </InlineContainer>
-                <XStack ai={'center'} jc={'center'}>
-                  {/* <ScheduleInput />
+                    {/* Datetime picker */}
+                    <InlineContainer space={'$2'}>
+                      <CalendarClock />
+                      <H6>Event schedule</H6>
+                    </InlineContainer>
+                    <XStack ai={'center'} jc={'center'}>
+                      {/* <ScheduleInput />
                   <ArrowRight />
                   <ScheduleInput /> */}
-                  <MyDatetimePicker />
-                </XStack>
+                      <MyDatetimePicker />
+                    </XStack>
 
-                {/* Location picker */}
-                {/* TODO: when the user click on this, map should appear for location picking*/}
-                <InlineContainer space={'$2'}>
-                  <MapPin />
-                  <Input flex={1} placeholder="Location" />
-                </InlineContainer>
+                    {/* Location picker */}
+                    {/* TODO: when the user click on this, map should appear for location picking*/}
+                    <InlineContainer space={'$2'}>
+                      <MapPin />
+                      <Input flex={1} placeholder="Location" />
+                    </InlineContainer>
 
-                {/* Description Input */}
-                <DescriptionInputGroup
-                  value={values.eventDetails}
-                  onChangeText={handleChange('eventDetails')}
-                  onBlur={handleBlur('eventDetails')}
-                  borderColor={touched.eventDetails && errors.eventDetails ? 'red' : undefined}
-                  placeholderTextColor={
-                    touched.eventDetails && errors.eventDetails ? 'red' : undefined
-                  }>
-                  {errors.eventDetails && (
-                    <Text ta={'right'} color={'$red10Light'}>
-                      {errors.eventDetails}
-                    </Text>
-                  )}
-                </DescriptionInputGroup>
-              </YStack>
+                    {/* Description Input */}
+                    <DescriptionInputGroup
+                      value={values.eventDetails}
+                      onChangeText={handleChange('eventDetails')}
+                      onBlur={handleBlur('eventDetails')}
+                      borderColor={touched.eventDetails && errors.eventDetails ? 'red' : undefined}
+                      placeholderTextColor={
+                        touched.eventDetails && errors.eventDetails ? 'red' : undefined
+                      }>
+                      {errors.eventDetails && (
+                        <Text ta={'right'} color={'$red10Light'}>
+                          {errors.eventDetails}
+                        </Text>
+                      )}
+                    </DescriptionInputGroup>
+                  </YStack>
 
-              {/* Button to submit */}
-              <Form.Trigger asChild disabled={status !== 'off'}>
-                <Button
-                  onPress={handleSubmit as (e?: GestureResponderEvent) => void}
-                  icon={status === 'submitting' ? () => <Spinner /> : undefined}>
-                  Submit
-                </Button>
-              </Form.Trigger>
-            </Form>
-          )}
-        </Formik>
-        <Separator />
-      </YStack>
-    </Theme>
+                  {/* Button to submit */}
+                  <Form.Trigger asChild disabled={status !== 'off'}>
+                    <Button
+                      onPress={handleSubmit as (e?: GestureResponderEvent) => void}
+                      icon={status === 'submitting' ? () => <Spinner /> : undefined}>
+                      Submit
+                    </Button>
+                  </Form.Trigger>
+                </Form>
+              )}
+            </Formik>
+            <Separator />
+          </YStack>
+        </Theme>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

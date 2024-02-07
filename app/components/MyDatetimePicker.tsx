@@ -26,6 +26,7 @@ export default function MyDatetimePicker() {
     setShow(false);
     if (dateType === 'start') {
       setStartDate(currentDate!);
+      // if start date is after end date, update the enddate and its time to make more sense
       if (currentDate!.getTime() > endDate.getTime()) {
         var newEndDate = new Date(currentDate!.getTime());
         newEndDate.setHours(newEndDate.getHours() + 1);
